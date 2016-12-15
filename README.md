@@ -20,9 +20,7 @@ Or install it yourself as:
 
     $ gem install hold_firefox
 
-## Usage
-
-TODO: Write usage instructions here
+Tested on Ubuntu.
 
 ## Development
 
