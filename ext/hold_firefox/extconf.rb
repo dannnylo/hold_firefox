@@ -14,12 +14,11 @@ Dir.chdir(File.join(root)) do
     system "rm firefox-45.0.tar.bz2"
   elsif RUBY_PLATFORM =~ /darwin/i
     unless File.exist?('/tmp/Firefox_45.0.dmg')
-      system "wget https://ftp.mozilla.org/pub/firefox/releases/45.0/mac/pt-BR/Firefox%2045.0.dmg -O /tmp/Firefox_45.0.dmg"
+      system "curl -o /tmp/Firefox_45.0.dmg 'https://ftp.mozilla.org/pub/firefox/releases/45.0/mac/pt-BR/Firefox%2045.0.dmg'"
     end
     mount_path = `hdiutil attach -nobrowse -noautoopen /tmp/Firefox_45.0.dmg | grep Firefox`.split(' ').first
     system "cp -R /Volumes/Firefox/Firefox.app . "
     system "hdiutil detach #{mount_path}"
-    #Selenium::WebDriver::Firefox::Binary.path = "/Users/andreleoni/Documents/Firefox.app/Contents/MacOS/firefox-bin"
   end
 end
 
